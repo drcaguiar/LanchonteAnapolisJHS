@@ -251,6 +251,8 @@ function calcularTroco() {
   if (!isNaN(dinheiro)) {
         const troco = dinheiro - total;
   	document.querySelector('#troco').value = `R$ ${troco.toFixed(2)}`;
+      } else {
+        document.getElementById("dinheiro").value = "";
       }
 }
 
