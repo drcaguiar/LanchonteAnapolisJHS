@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title></title>
+  <style>
+    /* estilo básico para a página */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+    }
+    .form-group {
+      margin-bottom: 10px;
+    }
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    input[type="number"] {
+      width: 100%;
+      padding: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+    .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    .btn:hover {
+      background-color: #3e8e41;
+    }
+    .btn-danger {
+      background-color: #f44336;
+    }
+    .btn-danger:hover {
+      background-color: #da190b;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-bottom: 10px;
+    }
+    th, td {
+      text-align: left;
+      padding: 8px;
+      border-bottom: 1px solid #ddd;
+    }
+    th {
+      background-color: #4CAF50;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Instituto Hesed</h1>
+    <form id="form">
+      <div class="form-group">
+        <label for="produto">Produto:</label>
+        <select id="produto" name="produto">
+          <option value="">Selecione um produto</option>
+          <option value="Cachorro quente">Cachorro quente - R$ 5,00</option>
+          <option value="Refrigerante">Refrigerante - R$ 3,50</option>
+          <option value="Pastel">Pastel - R$ 4,00</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="quantidade">Quantidade:</label>
+        <input type="number" id="quantidade" name="quantidade" min="1" value="1">
+      </div>
+      <div class="form-group" hidden>
+  	<label for="pagamento">Forma de pagamento:</label>
+  	<select id="pagamento" name="pagamento">
+    		<option value="dinheiro">Dinheiro</option>
+    	<option value="cartao" selected>Cartão</option>
+  	</select>
+	</div>
+      <div class="form-group">
+        <button type="button" id="adicionar" class="btn">Adicionar</button>
+        <button type="button" id="limpar" class="btn btn-danger">Limpar</button>
+      </div>
+    </form>
+    <table id="tabela">
+      <thead>
+        <tr>
+          <th>Produto</th>
+          <th>Quantidade</th>
+          <th>Preço unitário</th>
+          <th>Preço total</th>
+          <th>Ação</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="3" style="text-align: right;">Total:</td>
+          <td id="total" style="text-align: right;">R$ 0,00</td>
+          <td></td>
+        </tr>
+      </tfoot>
+    </table>
+    <form id="troco-form">
+      <div class="form-group">
+          <label for="dinheiro">Valor pago em dinheiro:</label>
+        <input type="number" id="dinheiro" name="dinheiro" min="0" step="0.01">
+      </div>
+      <div class="form-group">
+        <label for="troco">Troco:</label>
+        <input type="text" id="troco" name="troco" disabled>
+      </div>
+    </form>
+  </div>
+  <script>
+    // lista de produtos com os respectivos valores
+    const produtos = {
+      'Cachorro quente': 5.00,
+      'Refrigerante': 3.50,
+      'Pastel': 4.00
+    };
+
+    // variáveis globais para a tabela
+    const tbody = document.querySelector('#tabela tbody');
+    let itens = [];
+
+    // função para atualizar a tabela
+    function atualizarTabela() {
+      tbody.innerHTML = '';
+      let total = 0;
+      for (let i = 0; i < itens.length; i++) {
+        const item = itens[i];
+        const precoTotal = item.preco * item.quantidade;
+        total += precoTotal;
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td>${item.produto}</td>
+          <td>${item.quantidade}</td>
+          <td>R$ ${item.preco.toFixed(2)}</td>
+          <td>R$ ${precoTotal.toFixed(2)}</td>
+          <td><button type="button" class="btn btn-danger" onclick="removerItem(${i})">Remover</button></td>
+        `;
+        tbody.appendChild(tr);
+      }
+      document.querySelector('#total').textContent = `R$ ${total.toFixed(2)}`;
+    }
+
+    // função para adicionar um item à tabela
+    function adicionarItem() {
+      const produto = document.querySelector('#produto').value;
+      const quantidade = parseInt(document.querySelector('#quantidade').value);
+      const pagamento = document.querySelector('#pagamento').value;
+      const dinheiro = parseFloat(document.querySelector('#dinheiro').value);
+      if (produto === '' || quantidade === 0) {
+        alert('Por favor, preencha todos os campos.');
+        return;
+      }
+      const preco = produtos[produto];
+      const item = {
+        produto,
+        quantidade,
+        preco,
+        pagamento,
+        dinheiro
+      };
+      itens.push(item);
+      atualizarTabela();
+      document.querySelector('#produto').value = '';
+      document.querySelector('#quantidade').value = '1';
+      document.querySelector('#pagamento').value = 'Cartão';
+      document.querySelector('#dinheiro').value = '';
+}
+        // função para remover um item da tabela
+function removerItem(index) {
+  itens.splice(index, 1);
+  atualizarTabela();
+  calcularTroco();
+}
+
+// função para limpar a tabela
+function limparTabela() {
+  itens = [];
+  atualizarTabela();
+  document.getElementById("troco").value = "";
+  document.getElementById("dinheiro").value = "";
+}
+
+// função para calcular o troco
+function calcularTroco() {
+  const total = parseFloat(document.querySelector('#total').textContent.split(' ')[1]);
+  const dinheiro = parseFloat(document.querySelector('#dinheiro').value);
+  const troco = dinheiro - total;
+  document.querySelector('#troco').value = `R$ ${troco.toFixed(2)}`;
+}
+
+// função para formatar o dinheiro
+function formatarDinheiro(input) {
+  input.value = parseFloat(input.value).toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'});
+}
+
+// evento de clique no botão adicionar
+document.querySelector('#adicionar').addEventListener('click', adicionarItem);
+
+// evento de clique no botão limpar
+document.querySelector('#limpar').addEventListener('click', limparTabela);
+
+// evento de mudança no campo dinheiro
+document.querySelector('#dinheiro').addEventListener('input', calcularTroco);
+ </script>
+</body>
+</html>
+
+       
