@@ -90,7 +90,7 @@
 </head>
 <body>
   <div class="container">
-    <h1>Louvor a Deus!!!</h1>
+    <h1>Louvor a Deus!</h1>
     <form id="form">
       <div class="form-group">
         <label for="produto">Produto:</label>
@@ -248,8 +248,10 @@ function limparTabela() {
 function calcularTroco() {
   const total = parseFloat(document.querySelector('#total').textContent.split(' ')[1]);
   const dinheiro = parseFloat(document.querySelector('#dinheiro').value);
-  const troco = dinheiro - total;
-  document.querySelector('#troco').value = `R$ ${troco.toFixed(2)}`;
+  if (dinheiro !== '') {
+        const troco = dinheiro - total;
+  	document.querySelector('#troco').value = `R$ ${troco.toFixed(2)}`;
+      }
 }
 
 // função para formatar o dinheiro
