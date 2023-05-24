@@ -5,88 +5,88 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title></title>
   <style>
-      /* estilo básico para a página */
-      body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-      }
+    /* estilo básico para a página */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+    }
+    .form-group {
+      margin-bottom: 10px;
+    }
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    input[type="number"],
+    input[type="text"],
+    select {
+      width: 100%;
+      padding: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+    .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    .btn:hover {
+      background-color: #3e8e41;
+    }
+    .btn-danger {
+      background-color: #f44336;
+    }
+    .btn-danger:hover {
+      background-color: #da190b;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-bottom: 10px;
+    }
+    th, td {
+      text-align: left;
+      padding: 8px;
+      border-bottom: 1px solid #ddd;
+    }
+    th {
+      background-color: #4CAF50;
+      color: white;
+    }
+
+    /* regras de estilo para telas menores que 600 pixels de largura */
+    @media (max-width: 600px) {
       .container {
-        max-width: 800px;
-        margin: 0 auto;
-        padding: 20px;
+        padding: 10px;
       }
       h1 {
-        text-align: center;
-      }
-      .form-group {
-        margin-bottom: 10px;
-      }
-      label {
-        display: block;
-        font-weight: bold;
-        margin-bottom: 5px;
-      }
-      input[type="number"],
-      input[type="text"],
-      select {
-        width: 100%;
-        padding: 5px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        box-sizing: border-box;
+        font-size: 24px;
       }
       .btn {
-        display: inline-block;
-        padding: 10px 20px;
-        background-color: #4CAF50;
-        color: white;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        font-size: 16px;
-      }
-      .btn:hover {
-        background-color: #3e8e41;
-      }
-      .btn-danger {
-        background-color: #f44336;
-      }
-      .btn-danger:hover {
-        background-color: #da190b;
+        font-size: 14px;
+        padding: 8px 16px;
       }
       table {
-        border-collapse: collapse;
-        width: 100%;
-        margin-bottom: 10px;
+        font-size: 14px;
       }
-      th, td {
-        text-align: left;
-        padding: 8px;
-        border-bottom: 1px solid #ddd;
-      }
-      th {
-        background-color: #4CAF50;
-        color: white;
-      }
-
-      /* regras de estilo para telas menores que 600 pixels de largura */
-      @media (max-width: 600px) {
-        .container {
-          padding: 10px;
-        }
-        h1 {
-          font-size: 24px;
-        }
-        .btn {
-          font-size: 14px;
-          padding: 8px 16px;
-        }
-        table {
-          font-size: 14px;
-        }
-      }
-    </style>
+    }
+  </style>
 </head>
 <body>
   <div class="container">
@@ -96,41 +96,30 @@
         <label for="produto">Produto:</label>
         <select id="produto" name="produto">
           <option value="">Selecione um produto</option>
-          <option value="Caldo">Caldo - R$ 6,00</option>
-          <option value="Galinhada">Galinhada - R$ 10,00</option>
-          <option value="Hot Dog">Hot Dog - R$ 8,00</option>
-	  <option value="Salgado">Salgado - R$ 5,00</option>
-          <option value="Bolo Caseiro">Bolo Caseiro - R$ 12,00</option>
-          <option value="Suco Natural">Suco Natural - R$ 5,00</option>
-	  <option value="Refrigerante">Refrigerante - R$ 5,00</option>
-          <option value="Água">Água - R$ 3,00</option>
-          <option value="Sobremesa">Sobremesa - R$ 5,00</option>
-	  <option value="Docinho">Docinho - R$ 3,00</option>
-          <option value="Café">Café - R$ 2,00</option>
         </select>
       </div>
-<div class="form-group">
-    <label for="quantidade">Quantidade:</label>
-    <select id="quantidade" name="quantidade">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
-        <option value="8">8</option>
-        <option value="9">9</option>
-        <option value="10">10</option>
-    </select>
-</div>
+      <div class="form-group">
+        <label for="quantidade">Quantidade:</label>
+        <select id="quantidade" name="quantidade">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+        </select>
+      </div>
       <div class="form-group" hidden>
-  	<label for="pagamento">Forma de pagamento:</label>
-  	<select id="pagamento" name="pagamento">
-    		<option value="dinheiro">Dinheiro</option>
-    	<option value="cartao" selected>Cartão</option>
-  	</select>
-	</div>
+        <label for="pagamento">Forma de pagamento:</label>
+        <select id="pagamento" name="pagamento">
+          <option value="dinheiro">Dinheiro</option>
+          <option value="cartao" selected>Cartão</option>
+        </select>
+      </div>
       <div class="form-group">
         <button type="button" id="adicionar" class="btn">Adicionar</button>
         <button type="button" id="limpar" class="btn btn-danger">Limpar</button>
@@ -158,7 +147,7 @@
     </table>
     <form id="troco-form">
       <div class="form-group">
-          <label for="dinheiro">Valor pago em dinheiro:</label>
+        <label for="dinheiro">Valor pago em dinheiro:</label>
         <input type="text" id="dinheiro" name="dinheiro" pattern="[0-9]+([\.,][0-9]+)?">
       </div>
       <div class="form-group">
@@ -182,6 +171,17 @@
       'Docinho': 3.00,
       'Café': 2.00
     };
+
+    // preenche a lista de produtos no seletor
+    function preencherListaProdutos() {
+      const produtoSelect = document.querySelector('#produto');
+      for (const produto in produtos) {
+        const option = document.createElement('option');
+        option.value = produto;
+        option.textContent = produto + ' - R$ ' + produtos[produto].toFixed(2);
+        produtoSelect.appendChild(option);
+      }
+    }
 
     // variáveis globais para a tabela
     const tbody = document.querySelector('#tabela tbody');
@@ -233,49 +233,51 @@
       document.querySelector('#pagamento').value = 'Cartão';
       document.querySelector('#dinheiro').value = '';
       document.querySelector('#troco').value = '';
-}
-        // função para remover um item da tabela
-function removerItem(index) {
-  itens.splice(index, 1);
-  atualizarTabela();
-  calcularTroco();
-}
+    }
 
-// função para limpar a tabela
-function limparTabela() {
-  itens = [];
-  atualizarTabela();
-  document.getElementById("troco").value = "";
-  document.getElementById("dinheiro").value = "";
-}
+    // função para remover um item da tabela
+    function removerItem(index) {
+      itens.splice(index, 1);
+      atualizarTabela();
+      calcularTroco();
+    }
 
-// função para calcular o troco
-function calcularTroco() {
-  const total = parseFloat(document.querySelector('#total').textContent.split(' ')[1]);
-  const dinheiro = parseFloat(document.querySelector('#dinheiro').value);
-  if (!isNaN(dinheiro)) {
+    // função para limpar a tabela
+    function limparTabela() {
+      itens = [];
+      atualizarTabela();
+      document.getElementById("troco").value = "";
+      document.getElementById("dinheiro").value = "";
+    }
+
+    // função para calcular o troco
+    function calcularTroco() {
+      const total = parseFloat(document.querySelector('#total').textContent.split(' ')[1]);
+      const dinheiro = parseFloat(document.querySelector('#dinheiro').value);
+      if (!isNaN(dinheiro)) {
         const troco = dinheiro - total;
-  	document.querySelector('#troco').value = `R$ ${troco.toFixed(2)}`;
+        document.querySelector('#troco').value = `R$ ${troco.toFixed(2)}`;
       } else {
         document.getElementById("troco").value = "";
       }
-}
+    }
 
-// função para formatar o dinheiro
-function formatarDinheiro(input) {
-  input.value = parseFloat(input.value).toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'});
-}
+    // função para formatar o dinheiro
+    function formatarDinheiro(input) {
+      input.value = parseFloat(input.value).toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'});
+    }
 
-// evento de clique no botão adicionar
-document.querySelector('#adicionar').addEventListener('click', adicionarItem);
+    // evento de clique no botão adicionar
+    document.querySelector('#adicionar').addEventListener('click', adicionarItem);
 
-// evento de clique no botão limpar
-document.querySelector('#limpar').addEventListener('click', limparTabela);
+    // evento de clique no botão limpar
+    document.querySelector('#limpar').addEventListener('click', limparTabela);
 
-// evento de mudança no campo dinheiro
-document.querySelector('#dinheiro').addEventListener('input', calcularTroco);
- </script>
+    // evento de mudança no campo dinheiro
+    document.querySelector('#dinheiro').addEventListener('input', calcularTroco);
+
+    // chamada da função para preencher a lista de produtos
+    preencherListaProdutos();
+  </script>
 </body>
 </html>
-
-       
