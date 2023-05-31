@@ -159,18 +159,26 @@
   <script>
     // lista de produtos com os respectivos valores
     const produtos = {
-      'Caldo': 6.00,
+      'Caldo': 10.00,
       'Galinhada': 10.00,
-      'Hot Dog': 8.00,
-      'Salgado': 5.00,
+      'Hot Dog': 10.00,
+      'Pastel': 8.00,
       'Bolo Caseiro': 12.00,
+      'Bolo': 5.00,
       'Suco Natural': 5.00,
+      'Salgado': 8.00,
       'Refrigerante': 5.00,
       'Água': 3.00,
-      'Sobremesa': 5.00,
-      'Docinho': 3.00,
-      'Torta': 18.50
+      'Canjica': 5.00,
+      'Maça do Amor': 10.00,
+      'Arroz Carreteiro': 10.00,
+      'Café': 3.00
     };
+    const produtosOrdenados = Object.keys(produtos).sort().reduce((obj, key) => { 
+        obj[key] = produtos[key]; 
+        return obj;
+    }, {});
+    produtos = produtosOrdenados;
 
     // preenche a lista de produtos no seletor
     function preencherListaProdutos() {
