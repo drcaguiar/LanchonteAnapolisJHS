@@ -259,7 +259,11 @@
       const dinheiro = parseFloat(document.querySelector('#dinheiro').value);
       if (!isNaN(dinheiro)) {
         const troco = dinheiro - total;
-        document.querySelector('#troco').value = `R$ ${troco.toFixed(2)}`;
+        if (troco > 0) {
+          document.querySelector('#troco').value = `R$ ${troco.toFixed(2)}`;
+        } else {
+          document.getElementById("troco").value = "";
+        }
       } else {
         document.getElementById("troco").value = "";
       }
