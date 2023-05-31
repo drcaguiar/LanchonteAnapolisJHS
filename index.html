@@ -158,7 +158,7 @@
   </div>
   <script>
     // lista de produtos com os respectivos valores
-    const produtos = {
+    const produtosList = {
       'Caldo': 10.00,
       'Galinhada': 10.00,
       'Hot Dog': 10.00,
@@ -174,11 +174,10 @@
       'Arroz Carreteiro': 10.00,
       'Café': 3.00
     };
-    const produtosOrdenados = Object.keys(produtos).sort().reduce((obj, key) => { 
-        obj[key] = produtos[key]; 
+    const produtos = Object.keys(produtosList).sort().reduce((obj, key) => { 
+        obj[key] = produtosList[key]; 
         return obj;
     }, {});
-    produtos = produtosOrdenados;
 
     // preenche a lista de produtos no seletor
     function preencherListaProdutos() {
