@@ -158,26 +158,22 @@
   </div>
   <script>
     // lista de produtos com os respectivos valores
-    const produtosList = {
-      'Caldo': 10.00,
-      'Galinhada': 10.00,
-      'Hot Dog': 10.00,
-      'Pastel': 8.00,
-      'Bolo Caseiro': 12.00,
-      'Bolo': 5.00,
-      'Suco Natural': 5.00,
-      'Salgado': 8.00,
-      'Refrigerante': 5.00,
-      'Água': 3.00,
-      'Canjica': 5.00,
-      'Maça do Amor': 10.00,
-      'Arroz Carreteiro': 10.00,
-      'Café': 3.00
+    const produtos = {
+        'Água': 3.00,
+        'Arroz Carreteiro': 10.00,
+        'Bolo': 5.00,
+        'Bolo Caseiro': 12.00,
+        'Café': 3.00,
+        'Caldo': 10.00,
+        'Canjica': 5.00,
+        'Galinhada': 10.00,
+        'Hot Dog': 10.00,
+        'Maça do Amor': 10.00,
+        'Pastel': 8.00,
+        'Refrigerante': 5.00,
+        'Salgado': 8.00,
+        'Suco Natural': 5.00
     };
-    const produtos = Object.keys(produtosList).sort().reduce((obj, key) => { 
-        obj[key] = produtosList[key]; 
-        return obj;
-    }, {});
 
     // preenche a lista de produtos no seletor
     function preencherListaProdutos() {
